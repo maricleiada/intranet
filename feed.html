@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mini Rede Social</title>
+  <link rel="stylesheet" href="assets/css/feed.css" />
+</head>
+<body>
+  <header>
+    <h1>Minha Rede</h1>
+    <!-- Botão logout -->
+    <button id="btn-logout" style="position:absolute; top:10px; right:10px;">Sair</button>
+    <span id="nome-usuario" style="position:absolute; top:10px; right:80px; font-weight:bold;"></span>
+  </header>
+
+  <div class="container">
+    <!-- Menu Lateral Esquerdo -->
+    <aside class="sidebar-left">
+      <nav>
+        <ul>
+          <li>🏠 Atividades</li>
+          <li><button id="btn-pesquisar" class="menu-link">🔍 Postagens</button></li>
+          <li id="campo-busca" style="display: none;">
+            <input type="text" id="input-busca" placeholder="Digite para buscar..." />
+          </li>
+          <li><a href="notificacoes.html" class="menu-link">✉️ Notificações</a></li>
+          <li><a href="perfil.html" class="menu-link">👤 Perfil</a></li>
+        </ul>
+      </nav>
+      <button class="tweet-button">Escrever</button>
+      <div id="area-postagem" style="display: none; margin-top: 10px;">
+        <textarea id="texto-postagem" placeholder="O que você está pensando?" rows="4" cols="50"></textarea>
+        <br />
+        <input type="file" id="imagem-postagem" accept="image/*" />
+        <br />
+        <button id="btn-postar">Postar</button>
+        <button id="btn-cancelar">Cancelar</button>
+      </div>
+    </aside>
+
+    <!-- Feed Central -->
+    <main class="feed">
+      <ul id="lista-postagens">
+        <!-- Postagens serão inseridas aqui via JavaScript -->
+      </ul>
+    </main>
+  </div>
+
+  <script src="assets/js/feed.js"></script>
+</body>
+</html>

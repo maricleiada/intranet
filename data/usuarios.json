@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "nome": "Ana Souza",
+    "email": "ana.souza@empresa.com",
+    "senha": "senha123",
+    "cargo": "Gerente de TI",
+    "bio": "Apaixonada por tecnologia e inovação.",
+    "foto": "assets/img/ana.jpg"
+  },
+  {
+    "id": 2,
+    "nome": "Carlos Oliveira",
+    "email": "carlos.oliveira@empresa.com",
+    "senha": "senha456",
+    "cargo": "Analista de Sistemas",
+    "bio": "Focado em soluções eficientes e escaláveis.",
+    "foto": "assets/img/carlos.jpg"
+  }
+]

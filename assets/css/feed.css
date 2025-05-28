@@ -1,0 +1,113 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #e6ecf0;
+}
+
+header {
+  background-color: #1da1f2;
+  padding: 10px 20px;
+  color: white;
+  text-align: center;
+  font-size: 24px;
+}
+
+.container {
+  display: flex;
+  margin-top: 10px;
+  padding: 0 20px;
+}
+
+.sidebar-left,
+.sidebar-right {
+  width: 20%;
+  padding: 10px;
+}
+
+.sidebar-left a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  padding: 8px 0;
+}
+
+
+.menu-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+  background: none;
+  border: none;
+  font: inherit;
+  text-align: left;
+  width: 100%;
+}
+
+.menu-link:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+#input-busca {
+  width: 90%;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin: 5px 0 10px 0;
+}
+
+
+
+
+
+
+
+.sidebar-left {
+  text-align: left;
+}
+
+.sidebar-left ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-left li {
+  margin: 15px 0;
+  cursor: pointer;
+}
+
+.sidebar-right {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.feed {
+  width: 60%;
+  padding: 10px;
+}
+
+.post {
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
+.tweet-button {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #1da1f2;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
