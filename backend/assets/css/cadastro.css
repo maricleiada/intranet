@@ -1,0 +1,92 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo do corpo da página */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1e90ff, #00bfff);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container do formulário */
+.cadastro-container {
+  background-color: #ffffff;
+  padding: 30px 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+}
+
+
+.logo {
+  width: 100%;
+  max-width: 400px; /* ou o tamanho máximo desejado */
+  height: auto;
+  display: block;
+  margin: 0 auto 20px auto; /* centraliza e separa do título */
+}
+
+
+
+
+/* Título do formulário */
+.cadastro-container h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333333;
+}
+
+/* Estilo dos campos de entrada */
+.cadastro-container input[type="text"],
+.cadastro-container input[type="email"],
+.cadastro-container input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0 20px 0;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Botão de login */
+.cadastro-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #1e90ff;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cadastro-container button:hover {
+  background-color: #1c86ee;
+}
+
+/* Link de cadastro */
+.cadastro-container .register-link {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  color: #1e90ff;
+  text-decoration: none;
+  font-size: 14px;
+}
+p{
+    color: #333333;
+    text-align: center;
+}
+
+.cadastro-container .register-link:hover {
+  text-decoration: underline;
+}
