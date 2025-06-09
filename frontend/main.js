@@ -1,10 +1,5 @@
 import api from './services/api.js';
 
-document.addEventListener('DOMContentLoaded', async () => {
-  const status = await api.checkServerStatus();
-  console.log('Status do servidor:', status);
-});
-
 const urlInput = document.getElementById('urlInput');
 const addButton = document.getElementById('addButton');
 // const checkNowButton = document.getElementById('checkNowButton'); // REMOVIDO
