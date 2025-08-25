@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+</head>
+<body>
+  <h2>Login</h2>
+  <form id="loginForm">
+    <input type="text" id="username" placeholder="Usuário" required>
+    <input type="password" id="password" placeholder="Senha" required>
+    <button type="submit">Entrar</button>
+  </form>
+
+  <p id="error" style="color: red; display: none;"></p>
+  <p>Ainda não tem conta? <a href="signup.html">Crie aqui</a></p>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+
+        if (!res.ok) {
+  const { message } = await res.json().catch(() => ({}));
+  errorBox.innerHTML = (message || 'Erro ao autenticar.') + 
+    ' <br>Não tem conta? <a href="/signup.html">Crie uma agora</a>.';
+  errorBox.style.display = 'block';
+  return;
+}
+
+
+        const data = await res.json();
+        localStorage.setItem('token', data.token);
+        window.location.href = "home.html";
+      } catch (err) {
+        console.error("Erro:", err);
+        const errorMsg = document.getElementById('error');
+        errorMsg.textContent = "Erro no servidor. Tente novamente.";
+        errorMsg.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+  <script type="module">
+    import Auth from './js/auth.js';
+
+    // Redireciona dependendo do token
+    if (Auth.getToken()) {
+      window.location.href = '/home.html';
+    } else {
+      window.location.href = '/signin.html';
+    }
+  </script>
+</head>
+<body>
+  <h1>Redirecionando...</h1>
+</body>
+</html>

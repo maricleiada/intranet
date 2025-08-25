@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar Conta</title>
+</head>
+<body>
+  <h2>Criar Conta</h2>
+  <form id="signupForm">
+    <input type="text" id="username" placeholder="Usuário" required>
+    <input type="password" id="password" placeholder="Senha" required>
+    <button type="submit">Registrar</button>
+  </form>
+
+  <p id="message" style="color: green; display: none;"></p>
+  <p id="error" style="color: red; display: none;"></p>
+  <p>Já tem conta? <a href="signin.html">Fazer login</a></p>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        const res = await fetch('/api/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+
+        if (!res.ok) {
+          const error = await res.json();
+          const errorMsg = document.getElementById('error');
+          errorMsg.textContent = error.message || "Erro ao criar conta.";
+          errorMsg.style.display = 'block';
+          return;
+        }
+
+        const data = await res.json();
+        const msg = document.getElementById('message');
+        msg.textContent = "Conta criada com sucesso! Agora você pode fazer login.";
+        msg.style.display = 'block';
+
+        // Redireciona após alguns segundos
+        setTimeout(() => {
+          window.location.href = "signin.html";
+        }, 2000);
+      } catch (err) {
+        console.error("Erro:", err);
+        const errorMsg = document.getElementById('error');
+        errorMsg.textContent = "Erro no servidor. Tente novamente.";
+        errorMsg.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
