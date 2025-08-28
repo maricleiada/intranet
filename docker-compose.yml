@@ -1,0 +1,26 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/usr/src/app
+      - ./backend/prisma:/usr/src/app/prisma
+      - ./frontend:/usr/src/frontend
+    environment:
+      DATABASE_URL: "file:./prisma/dev.db"
+      JWT_SECRET: "dev-secret"
+    command: sh -c "npx prisma migrate dev --name init --schema=prisma/schema.prisma && node server.js"
+    depends_on:
+      - frontend
+
+  frontend:
+    image: nginx:alpine
+    container_name: frontend
+    ports:
+      - "8080:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro

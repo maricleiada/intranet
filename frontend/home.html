@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Monitor de Sites</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Bem-vindo ao Monitor de Sites</h1>
+
+    <div class="controls">
+      <input type="text" id="urlInput" placeholder="Digite a URL do site" />
+      <button id="addButton">Adicionar Site</button>
+      <button id="checkNowButton">Verificação Imediata</button>
+      <button id="logoutButton">Sair</button>
+    </div>
+
+    <ul id="siteList"></ul>
+  </div>
+
+  <script type="module">
+    import Auth from './js/auth.js';
+    import './js/main.js';
+
+    // Redireciona para login se não estiver logado
+    if (!Auth.getToken()) {
+      window.location.href = '/signin.html';
+    }
+
+    // Logout
+    document.getElementById('logoutButton').addEventListener('click', () => {
+      Auth.signout();
+    });
+  </script>
+</body>
+</html>

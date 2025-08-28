@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro - Monitor de Sites</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Criar Conta</h2>
+    <form id="signupForm">
+      <input type="text" id="name" placeholder="Nome" required>
+      <input type="text" id="username" placeholder="Usuário" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Senha" required>
+      <button type="submit">Cadastrar</button>
+    </form>
+
+    <p id="error"></p>
+    <p>Já tem conta? <a href="signin.html">Login</a></p>
+  </div>
+
+  <script type="module">
+    import Auth from './js/auth.js';
+
+    // Redireciona para home se já estiver logado
+    if (Auth.getToken()) {
+      window.location.href = '/home.html';
+    }
+
+    const form = document.getElementById('signupForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        const res = await fetch('http://localhost:3000/api/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, username, email, password })
+        });
+
+        if (!res.ok) {
+          const error = await res.json().catch(() => ({}));
+          const errorMsg = document.getElementById('error');
+          errorMsg.textContent = error.message || "Erro no cadastro.";
+          errorMsg.style.display = 'block';
+          return;
+        }
+
+        const data = await res.json();
+        console.log("TOKEN SALVO NO CADASTRO:", data.token);
+        Auth.signin(data.token); // loga automaticamente após cadastro
+
+      } catch (err) {
+        console.error("Erro:", err);
+        const errorMsg = document.getElementById('error');
+        errorMsg.textContent = "Erro no servidor. Tente novamente.";
+        errorMsg.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
